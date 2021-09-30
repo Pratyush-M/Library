@@ -25,7 +25,8 @@ span {
 }
 
 li {
+    font-size: 0.9em;
     list-style: none;
-    text-align: center;
+    text-align: left;
     padding: 5px;
 }

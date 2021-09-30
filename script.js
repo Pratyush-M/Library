@@ -30,13 +30,29 @@ myLibrary.push(bookObject);
 };
 
 function showBooks () {
-   let grid = document.getElementsByClassName("container")[0];
+    let grid = document.getElementsByClassName("container")[0];
     let span = document.createElement('span');
-    span.textContent = 'hey';
-    grid.appendChild(span);
+    let li = document.createElement('li');
+    
+    myLibrary.forEach( function (element, index) {
+    let span = document.createElement('span');
+    Object.keys(myLibrary[index]).forEach( function (key, index) {
+        li = document.createElement('li');
+        li.textContent = myLibrary[index].title;
+        grid.appendChild(span).appendChild(li);
+    })
+    // li.textContent = myLibrary[index].pages;
+    // grid.appendChild(span).appendChild(li);
+    // li = document.createElement('li');
+    // li.textContent = myLibrary[index].title;
+    // grid.appendChild(span).appendChild(li);
+    })
+
     
     
 }
+
+
 
  showBooks();
 
