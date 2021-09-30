@@ -1,22 +1,27 @@
 .topNavigation {
-    background-color: rgb(116, 230, 245);
+    /* background-color: rgb(116, 230, 245); */
     text-align: center;
     font-size: 2em;
 }
 
+.addBook {
+    display: block;
+    margin: auto;
+}
+
 .container {
-    
-    background-color: rgb(82, 211, 250);
+    /* background-color: rgb(82, 211, 250); */
+    padding-top: 10px;
     display: grid;
-    grid-template-columns: ; 
-    gap: 50px;
+    grid-template-columns: 1fr 1fr ; 
+    gap: 10px;
 }
 
 span {
-    outline: 2px solid greenyellow;
-    background-color: gray;
-    padding-top: 5px;
-    
+    /* outline: 2px solid greenyellow; */
+    background-color: rgb(86, 197, 201);
+    padding: 5px;
+    border-radius: 10px;
 }
 
 li {
