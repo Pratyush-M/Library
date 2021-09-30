@@ -15,3 +15,15 @@
     
 }
 
+span {
+    outline: 2px solid greenyellow;
+    background-color: gray;
+    padding-top: 5px;
+    
+}
+
+li {
+    list-style: none;
+    text-align: center;
+    padding-top: 5px;
+}
