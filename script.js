@@ -31,24 +31,19 @@ myLibrary.push(bookObject);
 
 function showBooks () {
     let grid = document.getElementsByClassName("container")[0];
-    let span = document.createElement('span');
     let li = document.createElement('li');
     
-    myLibrary.forEach( function (element, index) {
-    let span = document.createElement('span');
-    Object.keys(myLibrary[index]).forEach( function (key, index) {
-        li = document.createElement('li');
-        li.textContent = myLibrary[index].title;
-        grid.appendChild(span).appendChild(li);
-    })
-    // li.textContent = myLibrary[index].pages;
-    // grid.appendChild(span).appendChild(li);
-    // li = document.createElement('li');
-    // li.textContent = myLibrary[index].title;
-    // grid.appendChild(span).appendChild(li);
-    })
+        myLibrary.forEach( function (element, indexMain) {
+            let span = document.createElement('span');
 
+            Object.keys(myLibrary[indexMain]).forEach( function (key, index) {
+                li = document.createElement('li');
+                console.log(typeof(key));
+                li.textContent = myLibrary[indexMain][key];
+                grid.appendChild(span).appendChild(li);
+            })
     
+        })
     
 }
 
