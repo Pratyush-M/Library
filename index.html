@@ -17,23 +17,25 @@
     <div class="container">
     </div>
 
-    <form action="submit">
+    <form action="" class="bookForm">
         <fieldset>
             <legend> Add a Book</legend>
-                <label for="title">Name of Book</label>
+                <label for="title">Name of Book </label>
                 <input type="text" name="title" id="title" required>
                 <br>
                 <label for="author">Name of Author</label>
-                <input type="text" name ="author" id = "author">
+                <input type="text" name ="author" id = "author" required>
                 <br>
                 <label for="pages">Number of Pages</label>
-                <input type="number" name="pages" id="pages">
+                <input type="number" name="pages" id="pages" required>
                 <br>
                 <p>Have you Read the Book?</p>
-                <input type="radio" name="read" id="Yes" value="Yes">
+                <input type="radio" name="read" id="Yes" value="Yes" required>
                 <label for="Yes">Yes</label>
-                <input type="radio" name="read" id="No" value="No">
+                <input type="radio" name="read" id="No" value="No" required>
                 <label for="No">No</label>
+                <br>
+                <button>Submit</button>
             
         </fieldset>
 

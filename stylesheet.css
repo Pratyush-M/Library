@@ -1,3 +1,8 @@
+
+body {
+    background-color: rgb(75, 71, 71);
+}
+
 .topNavigation {
     /* background-color: rgb(116, 230, 245); */
     text-align: center;
@@ -32,4 +37,43 @@ li {
     list-style: none;
     text-align: left;
     padding: 5px;
+}
+
+.bookForm, fieldset {
+    background-color: rgb(107, 143, 209);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+input {
+    padding: 2px;
+    width: fit-content;
+    border-radius: 10px;
+    background-color: rgba(189, 192, 238, 0.76);
+    margin: 3px 0;
+}
+
+input:active {
+    border-color: sandybrown;
+}
+
+fieldset>p {
+    margin: 8px 0px;
+}
+
+button {
+    border-radius: 6px;
+    background-color: rgb(205, 218, 212);
+    border: 1px solid rgb(102, 100, 100);
+    padding: 4px;
+    margin-top: 5px;
+    
+}
+
+button:active {
+    background: rgb(145, 148, 153);
+}
+
+.hideForm {
+    visibility: hidden;
 }
