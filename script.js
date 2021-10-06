@@ -13,6 +13,8 @@ let myLibrary = [
         
 ];
 
+
+
 function Book(title, author, pages, read) {
  this.title = title;
  this.author = author;
@@ -21,15 +23,38 @@ function Book(title, author, pages, read) {
 };
 
 
+
+
+
 function addBookToLibrary() {
-let title = document.getElementById('title').textContent;
-let author = document.getElementById('title').textContent;
-let pages = document.getElementById('title').textContent;
-let read = document.getElementById('title').textContent;
+let title = "hey";
+let author = "yo";
+let pages = document.getElementsByName("pages")[0].value;
+let read = document.getElementsByName("read")[0].value;
 
 let bookObject = new Book(title, author, pages, read);
 myLibrary.push(bookObject);
 };
+
+let evaluator = function (e) {
+    console.log(document.getElementsByName("title")[0].value);
+    let el = document.querySelectorAll('input');
+     if (el[0].checkValidity() == true && el[1].checkValidity() == true && el[2].checkValidity() == true && el[3].checkValidity() == true) {
+      addBookToLibrary();
+      showBooks();
+         document.querySelector('form').classList.remove('showForm')
+         
+         document.querySelector('form').reset();
+
+     } 
+}
+document.getElementById("submit").onclick = evaluator;
+
+document.getElementById('addBook').addEventListener('click', () => {document.querySelector('form').classList.add('showForm')})
+
+
+
+
 
 function showBooks () {
     let grid = document.getElementsByClassName("container")[0];
@@ -69,27 +94,18 @@ function showBooks () {
                 li.textContent = myLibrary[indexMain][key];
                 grid.appendChild(span).appendChild(li);
                 }
+
+                
             })
+            let removeBtn = document.createElement('button');
+                removeBtn.textContent = "Remove"
+                span.appendChild(removeBtn);
     
         })
     
 }
 
+showBooks()
 
-
- showBooks();
-
-// addBookToLibrary();
 console.log(myLibrary) ;
 
-let evaluator = function (e) {
-    console.log(document.getElementsByName("title")[0].value);
-    let el = document.querySelectorAll('input');
-     if (el[0].checkValidity() == true && el[1].checkValidity() == true && el[2].checkValidity() == true && el[3].checkValidity() == true) {
-         document.querySelector('form').classList.remove('showForm')
-         document.querySelector('form').reset();
-     } 
-}
-document.getElementById("submit").onclick = evaluator;
-
-document.getElementById('addBook').addEventListener('click', () => {document.querySelector('form').classList.add('showForm')})
