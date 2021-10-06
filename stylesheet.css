@@ -9,7 +9,7 @@ body {
     font-size: 2em;
 }
 
-.addBook {
+#addBook {
     display: block;
     margin: auto;
 }
@@ -40,6 +40,7 @@ li {
 }
 
 .bookForm {
+    visibility: hidden;
     margin: 0;
   position: absolute;
   top: 50%;
@@ -101,8 +102,8 @@ form>div {
 
     background: transparent;
 }
-.hideForm {
-    visibility: hidden;
+.showForm {
+    visibility: visible;
 }
 
 .backgroundToggle {

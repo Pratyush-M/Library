@@ -13,12 +13,12 @@
             Books Manager
         </nav>
         <hr>
-        <button class="addBook">Add a Book</button>
+        <button id="addBook">Add a Book</button>
         <div class="container">
         </div>
     </div>
 
-    <form action="" class="bookForm">
+    <form action="" class="bookForm"  onsubmit="return false" id = "form">
         <div>
             <button class = 'close' type="reset" >X</button>
         </div>
@@ -37,10 +37,10 @@
                 <p>Have you Read the Book?</p>
                 <input type="radio" name="read" id="Yes" value="Yes" required>
                 <label for="Yes">Yes</label>
-                <input type="radio" name="read" id="No" value="No" required>
+                <input type="radio" name="read" id="No" value="No" >
                 <label for="No">No</label>
                 <br>
-                <button>Submit</button>
+                <button id = 'submit'>Submit</button>
                
         </fieldset>
 

@@ -10,15 +10,7 @@ let myLibrary = [
         pages: 500,
         read: 'No', },
 
-        { title: 'The Four Agreements',
-        author: 'Don Miguel Ruiz',
-        pages: 93,
-        read: 'Yes', },
-
-        { title: 'The Four Agreements',
-        author: 'Don Miguel Ruiz',
-        pages: 93,
-        read: 'Yes', },
+        
 ];
 
 function Book(title, author, pages, read) {
@@ -30,10 +22,10 @@ function Book(title, author, pages, read) {
 
 
 function addBookToLibrary() {
-let title = prompt('Name of book');
-let author = prompt('Name of Author');
-let pages = prompt('Number of pages')
-let read = prompt('Book status (Read/Unread)')
+let title = document.getElementById('title').textContent;
+let author = document.getElementById('title').textContent;
+let pages = document.getElementById('title').textContent;
+let read = document.getElementById('title').textContent;
 
 let bookObject = new Book(title, author, pages, read);
 myLibrary.push(bookObject);
@@ -50,35 +42,30 @@ function showBooks () {
 
                 if(key == 'author') {
                 li = document.createElement('li');
-                console.log(typeof(key));
                 li.textContent = 'By ' + myLibrary[indexMain][key] ;
                 grid.appendChild(span).appendChild(li);
                 }
 
                 else if(key == 'pages') {
                 li = document.createElement('li');
-                console.log(typeof(key));
                 li.textContent =  myLibrary[indexMain][key] + ' Pages' ;
                 grid.appendChild(span).appendChild(li);
                 }
 
                 else if(myLibrary[indexMain][key] == 'Yes') {
                 li = document.createElement('li');
-                console.log(typeof(key));
                 li.textContent = "Read" ;
                 grid.appendChild(span).appendChild(li);
                 }
 
                 else if (myLibrary[indexMain][key] == 'No'){
                 li = document.createElement('li');
-                console.log(typeof(key));
                 li.textContent = "Unread" ;
                 grid.appendChild(span).appendChild(li);
                 }
 
                 else {
                 li = document.createElement('li');
-                console.log(typeof(key));
                 li.textContent = myLibrary[indexMain][key];
                 grid.appendChild(span).appendChild(li);
                 }
@@ -93,4 +80,16 @@ function showBooks () {
  showBooks();
 
 // addBookToLibrary();
-console.log(myLibrary)
+console.log(myLibrary) ;
+
+let evaluator = function (e) {
+    console.log(document.getElementsByName("title")[0].value);
+    let el = document.querySelectorAll('input');
+     if (el[0].checkValidity() == true && el[1].checkValidity() == true && el[2].checkValidity() == true && el[3].checkValidity() == true) {
+         document.querySelector('form').classList.remove('showForm')
+         document.querySelector('form').reset();
+     } 
+}
+document.getElementById("submit").onclick = evaluator;
+
+document.getElementById('addBook').addEventListener('click', () => {document.querySelector('form').classList.add('showForm')})
