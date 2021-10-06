@@ -3,12 +3,12 @@ let myLibrary = [
        { title: 'Four Agreements',
         author: 'Don Miguel Ruiz',
         pages: 93,
-        read: 'Read', },
+        read: 'Yes', },
 
         { title: 'Eloquent Javascript',
         author: 'Marijne Haverbeke',
         pages: 500,
-        read: 'Unread', }
+        read: 'No', }
 ];
 
 function Book(title, author, pages, read) {
@@ -39,7 +39,7 @@ function showBooks () {
             Object.keys(myLibrary[indexMain]).forEach( function (key, index) {
                 li = document.createElement('li');
                 console.log(typeof(key));
-                li.textContent = myLibrary[indexMain][key];
+                li.textContent = key.charAt(0).toUpperCase() + key.substring(1) + ': ' + myLibrary[indexMain][key];
                 grid.appendChild(span).appendChild(li);
             })
     
