@@ -26,6 +26,7 @@ span {
 
 li:first-child {
     font-size: 1.5em;
+    padding-bottom: 2px;
 }
 li {
     list-style: none;
