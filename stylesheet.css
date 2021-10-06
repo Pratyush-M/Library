@@ -39,10 +39,23 @@ li {
     padding: 5px;
 }
 
+.bookForm {
+    margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+    padding: 5px;
+    
+    
+}
+
 .bookForm, fieldset {
     background-color: rgb(107, 143, 209);
     border-radius: 10px;
-    padding: 5px;
+    
+    
 }
 
 input {
@@ -74,6 +87,24 @@ button:active {
     background: rgb(145, 148, 153);
 }
 
+form>div {
+    
+    text-align: right;
+    margin-right: 8px;
+    
+}
+.close{
+    margin-top: 0px;
+    padding: 1px 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background: transparent;
+}
 .hideForm {
+    visibility: hidden;
+}
+
+.backgroundToggle {
     visibility: hidden;
 }

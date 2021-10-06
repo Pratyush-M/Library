@@ -8,7 +8,17 @@ let myLibrary = [
         { title: 'Eloquent Javascript',
         author: 'Marijne Haverbeke',
         pages: 500,
-        read: 'No', }
+        read: 'No', },
+
+        { title: 'The Four Agreements',
+        author: 'Don Miguel Ruiz',
+        pages: 93,
+        read: 'Yes', },
+
+        { title: 'The Four Agreements',
+        author: 'Don Miguel Ruiz',
+        pages: 93,
+        read: 'Yes', },
 ];
 
 function Book(title, author, pages, read) {
