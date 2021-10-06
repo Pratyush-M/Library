@@ -37,10 +37,41 @@ function showBooks () {
             let span = document.createElement('span');
 
             Object.keys(myLibrary[indexMain]).forEach( function (key, index) {
+
+                if(key == 'author') {
                 li = document.createElement('li');
                 console.log(typeof(key));
-                li.textContent = key.charAt(0).toUpperCase() + key.substring(1) + ': ' + myLibrary[indexMain][key];
+                li.textContent = 'By ' + myLibrary[indexMain][key] ;
                 grid.appendChild(span).appendChild(li);
+                }
+
+                else if(key == 'pages') {
+                li = document.createElement('li');
+                console.log(typeof(key));
+                li.textContent =  myLibrary[indexMain][key] + ' Pages' ;
+                grid.appendChild(span).appendChild(li);
+                }
+
+                else if(myLibrary[indexMain][key] == 'Yes') {
+                li = document.createElement('li');
+                console.log(typeof(key));
+                li.textContent = "Read" ;
+                grid.appendChild(span).appendChild(li);
+                }
+
+                else if (myLibrary[indexMain][key] == 'No'){
+                li = document.createElement('li');
+                console.log(typeof(key));
+                li.textContent = "Unread" ;
+                grid.appendChild(span).appendChild(li);
+                }
+
+                else {
+                li = document.createElement('li');
+                console.log(typeof(key));
+                li.textContent = myLibrary[indexMain][key];
+                grid.appendChild(span).appendChild(li);
+                }
             })
     
         })
