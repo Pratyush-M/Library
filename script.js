@@ -1,6 +1,6 @@
 let myLibrary = [
     
-       { title: 'The Four Agreements',
+        { title: 'The Four Agreements',
         author: 'Don Miguel Ruiz',
         pages: 93,
         read: 'Yes', },
@@ -27,8 +27,8 @@ function Book(title, author, pages, read) {
 
 
 function addBookToLibrary() {
-let title = "hey";
-let author = "yo";
+let title = document.getElementsByName("title")[0].value;
+let author = document.getElementsByName("author")[0].value;
 let pages = document.getElementsByName("pages")[0].value;
 let read = document.getElementsByName("read")[0].value;
 
@@ -41,16 +41,62 @@ let evaluator = function (e) {
     let el = document.querySelectorAll('input');
      if (el[0].checkValidity() == true && el[1].checkValidity() == true && el[2].checkValidity() == true && el[3].checkValidity() == true) {
       addBookToLibrary();
-      showBooks();
+
+      let lastLibraryObject = myLibrary[myLibrary.length-1];
+      let grid = document.getElementsByClassName("container")[0];
+      let li = document.createElement('li');
+      let span = document.createElement('span');    
+      let loopEachKey = function (key,index) {
+          if(key == 'author') {
+          li = document.createElement('li');
+          li.textContent = 'By ' + lastLibraryObject[key] ;
+          grid.appendChild(span).appendChild(li);
+          }
+      
+          else if(key == 'pages') {
+          li = document.createElement('li');
+          li.textContent =  lastLibraryObject[key] + ' Pages' ;
+          grid.appendChild(span).appendChild(li);
+          }
+      
+          else if(lastLibraryObject[key] == 'Yes') {
+          li = document.createElement('li');
+          li.textContent = "Read" ;
+          grid.appendChild(span).appendChild(li);
+          }
+      
+          else if (lastLibraryObject[key] == 'No'){
+          li = document.createElement('li');
+          li.textContent = "Unread" ;
+          grid.appendChild(span).appendChild(li);
+          }
+      
+          else {
+          li = document.createElement('li');
+          li.textContent = lastLibraryObject[key];
+          grid.appendChild(span).appendChild(li);
+          }
+        }
+        
+        Object.keys(lastLibraryObject).forEach(loopEachKey);
+        let removeBtn = document.createElement('button');
+          removeBtn.textContent = "Remove"
+          span.appendChild(removeBtn);
+      
+      }
+      
+        
+      
+  
+
          document.querySelector('form').classList.remove('showForm')
          
          document.querySelector('form').reset();
         
-         let grid = document.getElementsByClassName("container")[0];
-         let li = document.createElement('li');
+         
          
              
-     } 
+      
 }
 document.getElementById("submit").onclick = evaluator;
 
