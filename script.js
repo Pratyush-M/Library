@@ -77,25 +77,17 @@ let evaluator = function (e) {
           grid.appendChild(span).appendChild(li);
           }
         }
-        
+
         Object.keys(lastLibraryObject).forEach(loopEachKey);
         let removeBtn = document.createElement('button');
           removeBtn.textContent = "Remove"
           span.appendChild(removeBtn);
-      
-      }
-      
-        
-      
-  
 
-         document.querySelector('form').classList.remove('showForm')
+          document.querySelector('form').classList.remove('showForm')
          
          document.querySelector('form').reset();
-        
-         
-         
-             
+      
+      }
       
 }
 document.getElementById("submit").onclick = evaluator;
