@@ -88,6 +88,7 @@ let evaluator = function (e) {
           document.querySelector('form').classList.remove('showForm')
          
          document.querySelector('form').reset();
+         Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => x.parentNode.remove()))
       
       }
       
@@ -155,3 +156,4 @@ console.log(myLibrary) ;
 
 document.getElementsByClassName('close')[0].addEventListener('click', () => document.querySelector('form').classList.remove('showForm'))
 
+Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => x.parentNode.remove()))
