@@ -45,7 +45,8 @@ let evaluator = function (e) {
       let lastLibraryObject = myLibrary[myLibrary.length-1];
       let grid = document.getElementsByClassName("container")[0];
       let li = document.createElement('li');
-      let span = document.createElement('span');    
+      let span = document.createElement('span'); 
+      span.classList.add(myLibrary.length-1);
       let loopEachKey = function (key,index) {
           if(key == 'author') {
           li = document.createElement('li');
@@ -80,6 +81,7 @@ let evaluator = function (e) {
 
         Object.keys(lastLibraryObject).forEach(loopEachKey);
         let removeBtn = document.createElement('button');
+          removeBtn.classList.add('remove')
           removeBtn.textContent = "Remove"
           span.appendChild(removeBtn);
 
@@ -140,6 +142,7 @@ function showBooks () {
             
         })
         let removeBtn = document.createElement('button');
+            removeBtn.classList.add('remove')
             removeBtn.textContent = "Remove"
             span.appendChild(removeBtn);
     }
@@ -151,3 +154,4 @@ showBooks()
 console.log(myLibrary) ;
 
 document.getElementsByClassName('close')[0].addEventListener('click', () => document.querySelector('form').classList.remove('showForm'))
+
