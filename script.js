@@ -5,6 +5,8 @@ let myLibrary = [
         pages: 93,
         read: 'Yes', },
 
+        undefined,
+
         { title: 'Eloquent Javascript',
         author: 'Marijne Haverbeke',
         pages: 500,
@@ -37,7 +39,6 @@ myLibrary.push(bookObject);
 };
 
 let evaluator = function (e) {
-    console.log(document.getElementsByName("title")[0].value);
     let el = document.querySelectorAll('input');
      if (el[0].checkValidity() == true && el[1].checkValidity() == true && el[2].checkValidity() == true && el[3].checkValidity() == true) {
       addBookToLibrary();
@@ -82,13 +83,17 @@ let evaluator = function (e) {
         Object.keys(lastLibraryObject).forEach(loopEachKey);
         let removeBtn = document.createElement('button');
           removeBtn.classList.add('remove')
+         let arrayIndexRemove = removeBtn.dataset.libIndex = `${myLibrary.length - 1}`
           removeBtn.textContent = "Remove"
           span.appendChild(removeBtn);
 
           document.querySelector('form').classList.remove('showForm')
          
          document.querySelector('form').reset();
-         Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => x.parentNode.remove()))
+         Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => { 
+             x.parentNode.remove()
+             console.log(removeBtn.dataset.libIndex)
+        }))
       
       }
       
@@ -107,8 +112,12 @@ function showBooks () {
 
     let libraryLoop = function (element, indexMain) {
         let span = document.createElement('span');
+        if (myLibrary[indexMain] == undefined ) {
+            return;
+        }
     
         Object.keys(myLibrary[indexMain]).forEach( function (key, index) {
+            
     
             if(key == 'author') {
             li = document.createElement('li');
