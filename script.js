@@ -6,12 +6,6 @@ let myLibrary = [
         read: 'Yes', },
 
         undefined,
-
-        { title: 'Eloquent Javascript',
-        author: 'Marijne Haverbeke',
-        pages: 500,
-        read: 'No', },
-
         
 ];
 
@@ -28,6 +22,7 @@ function Book(title, author, pages, read) {
 
 
 
+
 function addBookToLibrary() {
 let title = document.getElementsByName("title")[0].value;
 let author = document.getElementsByName("author")[0].value;
@@ -38,7 +33,7 @@ let bookObject = new Book(title, author, pages, read);
 myLibrary.push(bookObject);
 };
 
-let evaluator = function (e) {
+let evaluator = function () {
     let el = document.querySelectorAll('input');
      if (el[0].checkValidity() == true && el[1].checkValidity() == true && el[2].checkValidity() == true && el[3].checkValidity() == true) {
       addBookToLibrary();
@@ -91,8 +86,9 @@ let evaluator = function (e) {
          
          document.querySelector('form').reset();
          Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => { 
+            delete myLibrary[x.dataset.libIndex]
              x.parentNode.remove()
-             console.log(removeBtn.dataset.libIndex)
+             console.log(myLibrary)
         }))
       
       }
@@ -165,4 +161,8 @@ console.log(myLibrary) ;
 
 document.getElementsByClassName('close')[0].addEventListener('click', () => document.querySelector('form').classList.remove('showForm'))
 
-Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => x.parentNode.remove()))
+Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => {delete myLibrary[0];
+    x.parentNode.remove();
+    console.log(myLibrary)}))
+
+    
