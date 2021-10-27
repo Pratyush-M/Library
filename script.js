@@ -1,13 +1,22 @@
+
 let myLibrary = [
     
         { title: 'The Four Agreements',
         author: 'Don Miguel Ruiz',
         pages: 93,
-        read: 'Yes', },
+        read: 'Yes', }
 
-        undefined,
+        
+
+        
         
 ];
+
+createLibrary();
+if (!myLibrary) {
+    myLibrary = [];
+}
+console.log(myLibrary)
 
 
 
@@ -93,6 +102,7 @@ let evaluator = function () {
       
       }
       
+      populateStorage();
 }
 document.getElementById("submit").onclick = evaluator;
 
@@ -165,4 +175,14 @@ Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEvent
     x.parentNode.remove();
     console.log(myLibrary)}))
 
+function populateStorage() {
+    const jsonObj = JSON.stringify(myLibrary);
+    localStorage.setItem('storedLibrary', jsonObj);
+} 
+
+function createLibrary() {
     
+    jsonLibrary = localStorage.getItem('storedLibrary');
+     myLibrary = JSON.parse(jsonLibrary); 
+
+}
