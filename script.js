@@ -1,4 +1,4 @@
-
+//window.localStorage.clear()
 let myLibrary = [
     
         { title: 'The Four Agreements',
@@ -36,7 +36,7 @@ function addBookToLibrary() {
 let title = document.getElementsByName("title")[0].value;
 let author = document.getElementsByName("author")[0].value;
 let pages = document.getElementsByName("pages")[0].value;
-let read = document.getElementsByName("read")[0].value;
+let read = document.querySelector('input[name="read"]:checked').value;
 
 let bookObject = new Book(title, author, pages, read);
 myLibrary.push(bookObject);
@@ -98,12 +98,14 @@ let evaluator = function () {
             delete myLibrary[x.dataset.libIndex]
              x.parentNode.remove()
              console.log(myLibrary)
-        }))
+             populateStorage();
+        }));
       
       }
       
       populateStorage();
 }
+
 document.getElementById("submit").onclick = evaluator;
 
 document.getElementById('addBook').addEventListener('click', () => {document.querySelector('form').classList.add('showForm')})
@@ -158,6 +160,7 @@ function showBooks () {
             
         })
         let removeBtn = document.createElement('button');
+            removeBtn.dataset.libIndex = `${indexMain}`
             removeBtn.classList.add('remove')
             removeBtn.textContent = "Remove"
             span.appendChild(removeBtn);
@@ -171,9 +174,14 @@ console.log(myLibrary) ;
 
 document.getElementsByClassName('close')[0].addEventListener('click', () => document.querySelector('form').classList.remove('showForm'))
 
-Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => {delete myLibrary[0];
-    x.parentNode.remove();
-    console.log(myLibrary)}))
+
+Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => { 
+    
+    delete myLibrary[x.dataset.libIndex]
+     x.parentNode.remove()
+     console.log(myLibrary)
+     populateStorage();
+}));
 
 function populateStorage() {
     const jsonObj = JSON.stringify(myLibrary);
@@ -186,3 +194,5 @@ function createLibrary() {
      myLibrary = JSON.parse(jsonLibrary); 
 
 }
+
+evaluator();
