@@ -16,7 +16,6 @@ createLibrary();
 if (!myLibrary) {
     myLibrary = [];
 }
-console.log(myLibrary)
 
 
 
@@ -170,7 +169,6 @@ function showBooks () {
 
 showBooks()
 
-console.log(myLibrary) ;
 
 document.getElementsByClassName('close')[0].addEventListener('click', () => document.querySelector('form').classList.remove('showForm'))
 
@@ -194,5 +192,3 @@ function createLibrary() {
      myLibrary = JSON.parse(jsonLibrary); 
 
 }
-
-evaluator();
