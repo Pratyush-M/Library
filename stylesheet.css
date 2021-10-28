@@ -97,6 +97,14 @@ button:active {
     background: rgb(145, 148, 153);
 }
 
+.switch {
+    margin-left: 5px;
+}
+
+.unread {
+    background-color: rgb(224, 139, 68);
+}
+
 form>div {
     
     text-align: right;

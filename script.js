@@ -1,4 +1,4 @@
-//window.localStorage.clear()
+window.localStorage.clear()
 let myLibrary = [
     
         { title: 'The Four Agreements',
@@ -14,7 +14,11 @@ let myLibrary = [
 
 createLibrary();
 if (!myLibrary) {
-    myLibrary = [];
+    myLibrary = [{ title: 'The Four Agreements',
+    author: 'Don Miguel Ruiz',
+    pages: 93,
+    read: 'Yes', }
+];
 }
 
 
@@ -30,15 +34,15 @@ Object.prototype.switchStatus = function (x) {
     if (this.read == 'Yes') {
         this.read = 'No'
         x.parentNode.children[3].textContent = 'Unread'
-    }
+        x.parentNode.classList.add('unread')
+        }
 
     else {
         this.read = 'Yes'
         x.parentNode.children[3].textContent = 'Read'
+        x.parentNode.classList.remove('unread')
     }
 }
-
-
 
 
 function addBookToLibrary() {
@@ -115,13 +119,11 @@ let evaluator = function () {
          Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => { 
             delete myLibrary[x.dataset.libIndex]
              x.parentNode.remove()
-             console.log(myLibrary)
              populateStorage();
         }));
 
         Array.from(document.getElementsByClassName('switch')).forEach( (x) => x.addEventListener('click', () => { 
             myLibrary[x.dataset.libIndex].switchStatus(x)
-             console.log(myLibrary)
              populateStorage();
         }));
       
@@ -167,12 +169,14 @@ function showBooks () {
             li = document.createElement('li');
             li.textContent = "Read" ;
             grid.appendChild(span).appendChild(li);
+            li.parentNode.classList.remove('unread')
             }
     
             else if (myLibrary[indexMain][key] == 'No'){
             li = document.createElement('li');
             li.textContent = "Unread" ;
             grid.appendChild(span).appendChild(li);
+            li.parentNode.classList.add('unread')
             }
     
             else {
@@ -180,7 +184,7 @@ function showBooks () {
             li.textContent = myLibrary[indexMain][key];
             grid.appendChild(span).appendChild(li);
             }
-    
+            
             
         })
         let removeBtn = document.createElement('button');
@@ -209,14 +213,12 @@ Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEvent
     
     delete myLibrary[x.dataset.libIndex]
      x.parentNode.remove()
-     console.log(myLibrary)
      populateStorage();
 }));
 
 
 Array.from(document.getElementsByClassName('switch')).forEach( (x) => x.addEventListener('click', () => { 
     myLibrary[x.dataset.libIndex].switchStatus(x)
-     console.log(myLibrary)
      populateStorage();
 }));
 
@@ -232,5 +234,3 @@ function createLibrary() {
      myLibrary = JSON.parse(jsonLibrary); 
 
 }
-
-console.log(Object.getPrototypeOf(myLibrary))
