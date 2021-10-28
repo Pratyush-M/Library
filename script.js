@@ -26,7 +26,15 @@ function Book(title, author, pages, read) {
  this.read = read;
 };
 
+Book.prototype.switchStatus = function () {
+    if (this.read == 'Yes') {
+        this.read = 'No'
+    }
 
+    else {
+        this.read = 'Yes'
+    }
+}
 
 
 
@@ -90,12 +98,25 @@ let evaluator = function () {
           removeBtn.textContent = "Remove"
           span.appendChild(removeBtn);
 
+          let switchBtn = document.createElement('button');
+          switchBtn.classList.add('switch')
+          switchBtn.dataset.libIndex = `${myLibrary.length - 1}`
+          switchBtn.textContent = 'Read Status';
+          document.createElement('span')
+          span.appendChild(switchBtn);
+
           document.querySelector('form').classList.remove('showForm')
          
          document.querySelector('form').reset();
          Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEventListener('click', () => { 
             delete myLibrary[x.dataset.libIndex]
              x.parentNode.remove()
+             console.log(myLibrary)
+             populateStorage();
+        }));
+
+        Array.from(document.getElementsByClassName('switch')).forEach( (x) => x.addEventListener('click', () => { 
+            myLibrary[x.dataset.libIndex].switchStatus()
              console.log(myLibrary)
              populateStorage();
         }));
