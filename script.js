@@ -26,7 +26,7 @@ function Book(title, author, pages, read) {
  this.read = read;
 };
 
-Book.prototype.switchStatus = function (x) {
+Object.prototype.switchStatus = function (x) {
     if (this.read == 'Yes') {
         this.read = 'No'
         x.parentNode.children[3].textContent = 'Unread'
@@ -188,6 +188,13 @@ function showBooks () {
             removeBtn.classList.add('remove')
             removeBtn.textContent = "Remove"
             span.appendChild(removeBtn);
+
+        let switchBtn = document.createElement('button');
+        switchBtn.dataset.libIndex = `${indexMain}`
+        switchBtn.classList.add('switch')
+        switchBtn.textContent = 'Read Status'
+        document.createElement('span')
+        span.appendChild(switchBtn);
     }
         myLibrary.forEach(libraryLoop)
 }
@@ -206,6 +213,14 @@ Array.from(document.getElementsByClassName('remove')).forEach( (x) => x.addEvent
      populateStorage();
 }));
 
+
+Array.from(document.getElementsByClassName('switch')).forEach( (x) => x.addEventListener('click', () => { 
+    myLibrary[x.dataset.libIndex].switchStatus(x)
+     console.log(myLibrary)
+     populateStorage();
+}));
+
+
 function populateStorage() {
     const jsonObj = JSON.stringify(myLibrary);
     localStorage.setItem('storedLibrary', jsonObj);
@@ -217,3 +232,5 @@ function createLibrary() {
      myLibrary = JSON.parse(jsonLibrary); 
 
 }
+
+console.log(Object.getPrototypeOf(myLibrary))
