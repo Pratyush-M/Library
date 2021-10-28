@@ -1,16 +1,5 @@
 window.localStorage.clear()
-let myLibrary = [
-    
-        { title: 'The Four Agreements',
-        author: 'Don Miguel Ruiz',
-        pages: 93,
-        read: 'Yes', }
-
-        
-
-        
-        
-];
+let myLibrary = [];
 
 createLibrary();
 if (!myLibrary) {
@@ -83,6 +72,7 @@ let evaluator = function () {
           li.classList.add('textRead')
           li.textContent = "Read" ;
           grid.appendChild(span).appendChild(li);
+          li.parentNode.classList.remove('unread')
           }
       
           else if (lastLibraryObject[key] == 'No'){
@@ -90,6 +80,7 @@ let evaluator = function () {
           li.classList.add('textRead')
           li.textContent = "Unread" ;
           grid.appendChild(span).appendChild(li);
+          li.parentNode.classList.add('unread')
           }
       
           else {
