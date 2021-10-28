@@ -26,13 +26,15 @@ function Book(title, author, pages, read) {
  this.read = read;
 };
 
-Book.prototype.switchStatus = function () {
+Book.prototype.switchStatus = function (x) {
     if (this.read == 'Yes') {
         this.read = 'No'
+        x.parentNode.children[3].textContent = 'Unread'
     }
 
     else {
         this.read = 'Yes'
+        x.parentNode.children[3].textContent = 'Read'
     }
 }
 
@@ -74,12 +76,14 @@ let evaluator = function () {
       
           else if(lastLibraryObject[key] == 'Yes') {
           li = document.createElement('li');
+          li.classList.add('textRead')
           li.textContent = "Read" ;
           grid.appendChild(span).appendChild(li);
           }
       
           else if (lastLibraryObject[key] == 'No'){
           li = document.createElement('li');
+          li.classList.add('textRead')
           li.textContent = "Unread" ;
           grid.appendChild(span).appendChild(li);
           }
@@ -116,7 +120,7 @@ let evaluator = function () {
         }));
 
         Array.from(document.getElementsByClassName('switch')).forEach( (x) => x.addEventListener('click', () => { 
-            myLibrary[x.dataset.libIndex].switchStatus()
+            myLibrary[x.dataset.libIndex].switchStatus(x)
              console.log(myLibrary)
              populateStorage();
         }));
